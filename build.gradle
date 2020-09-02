@@ -1,44 +1,28 @@
-group 'br.com.doliver'
-version '0.0.1'
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
 
-buildscript {
-    ext {
-        springBootVersion = '1.5.6.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: springBootVersion
+group = 'br.com.doliversilva'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.3.RELEASE'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter'
-
-        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-        testCompile group: 'junit', name: 'junit', version: '4.12'
-    }
-}
-
-project(':finance-api') {
-    bootRun {
-        group = 'LOCAL'
-        systemProperties = ['spring.profiles.active': 'local']
-    }
-
-    dependencies {
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    }
+test {
+    useJUnitPlatform()
 }
