@@ -7,11 +7,17 @@ This project is for a personal study. The main goals is experimental the follow 
 * Messages and Event Streeming plataforms
 
 ####How to run
-First, we need to build the project
+Follow the steps
+
+Build project
 
     ./gradlew clean build
-    
-You can run in two ways:
+
+Execute Flyway Migration with some of the optios for environment
+
+    .gradlew flywayMigrate -Penv=(local|dev|qa|prod)
+
+You can run the application in two ways:
 1. Java application local
 
         java -jar build/finance-{version}.jar

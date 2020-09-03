@@ -12,7 +12,6 @@ public class HomeResource {
 
     @GetMapping(path = "/")
     public String home(){
-        logger.info("home");
         return "home";
     }
 }
