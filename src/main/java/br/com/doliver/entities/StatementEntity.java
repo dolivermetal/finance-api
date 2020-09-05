@@ -1,6 +1,6 @@
-package br.com.doliversilva.entities;
+package br.com.doliver.entities;
 
-import br.com.doliversilva.types.Category;
+import br.com.doliver.types.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

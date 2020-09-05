@@ -1,4 +1,4 @@
-package br.com.doliversilva.entities;
+package br.com.doliver.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

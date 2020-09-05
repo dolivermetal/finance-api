@@ -1,6 +1,4 @@
-package br.com.doliversilva.types;
-
-import java.math.BigInteger;
+package br.com.doliver.types;
 
 public enum AccountType {
 

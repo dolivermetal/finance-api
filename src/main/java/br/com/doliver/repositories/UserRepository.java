@@ -1,6 +1,6 @@
-package br.com.doliversilva.repositories;
+package br.com.doliver.repositories;
 
-import br.com.doliversilva.entities.UserEntity;
+import br.com.doliver.entities.UserEntity;
 import org.springframework.data.repository.Repository;
 
 import java.math.BigInteger;

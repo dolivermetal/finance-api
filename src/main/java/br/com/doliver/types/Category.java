@@ -1,4 +1,4 @@
-package br.com.doliversilva.types;
+package br.com.doliver.types;
 
 public enum Category {
 

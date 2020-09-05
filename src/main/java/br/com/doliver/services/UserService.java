@@ -1,8 +1,7 @@
-package br.com.doliversilva.services;
+package br.com.doliver.services;
 
-import br.com.doliversilva.entities.UserEntity;
-import br.com.doliversilva.repositories.UserRepository;
-import br.com.doliversilva.resources.HomeResource;
+import br.com.doliver.entities.UserEntity;
+import br.com.doliver.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
