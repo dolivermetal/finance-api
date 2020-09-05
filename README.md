@@ -1,4 +1,4 @@
-## Finance
+## Finance API
 This project is for a personal study. The main goals is experimental the follow tecnologies:
 * Spring Boot
 * Docker
@@ -20,7 +20,7 @@ Execute Flyway Migration with some of the optios for environment
 You can run the application in two ways:
 1. Java application local
 
-        java -jar build/finance-{version}.jar
+        java -jar build/finance-api-{version}.jar
     
 2. Java application in a docker
 
