@@ -1,5 +1,6 @@
 package br.com.doliver.entities;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,13 +10,14 @@ import java.math.BigInteger;
 
 @Entity
 @NoArgsConstructor
+@Builder
 public class UserEntity {
 
     @Id
     @Column(name = "user_id", scale = 20, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private BigInteger userID;
+    private BigInteger userId;
 
     @Column(name = "name", length = 100, nullable = false)
     @Getter @Setter
