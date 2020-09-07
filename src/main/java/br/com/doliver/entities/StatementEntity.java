@@ -13,36 +13,40 @@ import java.math.BigInteger;
 import java.util.Calendar;
 
 @Entity
-@NoArgsConstructor
 @Builder
 public class StatementEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "statement_id", scale = 20, nullable = false)
-    @Getter
+    @Getter @Setter
     private BigInteger statementId;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
-    @Getter
+    @Getter @Setter
     private AccountEntity account;
 
     @Column(name = "description", length = 100, nullable = false)
-    @Getter
+    @Getter @Setter
     private String description;
 
     @Column(name = "amount", scale = 20, precision = 2, nullable = false)
-    @Getter
+    @Getter @Setter
     private BigDecimal amount;
 
     @Column(name = "category", nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    @Getter
+    @Getter @Setter
     private Category category;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "created_at")
-    @Getter
+    @Getter @Setter
     private Calendar createdAt;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "updated_at")
+    @Getter @Setter
+    private Calendar updatedAt;
 }

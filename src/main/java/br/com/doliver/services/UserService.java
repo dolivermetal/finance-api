@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.util.Calendar;
 
 @Repository
 public class UserService {
@@ -32,6 +33,7 @@ public class UserService {
         try {
             final UserEntity user = repository.getOne(userId);
             user.setStatus(false);
+            user.setUpdatedAt(Calendar.getInstance());
             repository.save(user);
             return true;
         } catch (Exception e) {
@@ -46,6 +48,8 @@ public class UserService {
                 .login(form.getLogin())
                 .password(form.getPassword())
                 .status(true)
+                .createdAt(Calendar.getInstance())
+                .updatedAt(Calendar.getInstance())
                 .build();
         user = repository.save(user);
         logger.info(String.format("Novo usuário cadastrado. user { id: $d, login : %s }", user.getUserId(), user.getLogin()));

@@ -30,10 +30,10 @@ public class StatementService {
         final AccountEntity account = accountRepository.getOne(form.getAccount().getAccountId());
         StatementEntity statement = StatementEntity.builder()
                 .account(account)
-                .amount(form.getAmount())
-                .createdAt(form.getCreatedAt())
                 .description(form.getDescription())
+                .amount(form.getAmount())
                 .category(form.getCategory())
+                .createdAt(form.getCreatedAt())
                 .build();
         statement = repository.save(statement);
 
@@ -57,8 +57,8 @@ public class StatementService {
     private StatementForm builder(StatementEntity statement) {
         final AccountForm accountForm = AccountForm.builder()
                 .accountId(statement.getAccount().getAccountID())
-                .accountType(statement.getAccount().getAccountType())
                 .alias(statement.getAccount().getAlias())
+                .accountType(statement.getAccount().getAccountType())
                 .balance(statement.getAccount().getBalance())
                 .build();
 

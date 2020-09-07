@@ -4,8 +4,8 @@ create table `user` (
     login varchar(100) not null,
     password varchar(100) not null,
     status tinyint(1) not null,
-    created_at timestamp not null,
-    update_at timestamp not null,
+    created_at timestamp null,
+    updated_at timestamp null,
     primary key (user_id)
 );
 
@@ -14,8 +14,8 @@ create table account (
     alias varchar(100) not null,
     account_type enum('BANK','CREDIT_CARD') not null,
     balance decimal(10,2) not null,
-    created_at timestamp not null,
-    update_at timestamp  not null,
+    created_at timestamp null,
+    updated_at timestamp  null,
     primary key (account_id)
 );
 
@@ -40,7 +40,7 @@ create table statement (
         'TRANSPORT',
         'TRAVEL',
         'PERSONAL CARE') not null,
-    created_at timestamp not null,
+    created_at timestamp null,
     primary key (statement_id),
     foreign key fk_statement_account (account_id) references account (account_id)
 );

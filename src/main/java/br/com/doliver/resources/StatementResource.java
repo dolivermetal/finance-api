@@ -30,7 +30,7 @@ public class StatementResource {
         }
     }
 
-    @GetMapping("/list/accountId")
+    @GetMapping("/list/{accountId}")
     public ResponseEntity listByAccountId(@PathVariable final BigInteger accountId) {
         List<StatementForm> statements = statementService.listByAccountId(accountId);
         return ResponseEntity.ok().body(statements);
