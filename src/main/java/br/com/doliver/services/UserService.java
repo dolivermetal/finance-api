@@ -50,7 +50,7 @@ public class UserService {
         user = repository.save(user);
         logger.info(String.format("Novo usuário cadastrado. user { id: $d, login : %s }", user.getUserId(), user.getLogin()));
         return UserForm.builder()
-                .userID(user.getUserId())
+                .userId(user.getUserId())
                 .name(user.getName())
                 .login(user.getLogin())
                 .build();

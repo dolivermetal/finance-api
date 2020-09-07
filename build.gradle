@@ -37,6 +37,7 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 }
 
 flyway {

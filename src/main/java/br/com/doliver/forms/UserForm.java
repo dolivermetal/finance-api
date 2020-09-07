@@ -9,7 +9,7 @@ import java.math.BigInteger;
 public class UserForm {
 
     @Getter
-    private BigInteger userID;
+    private BigInteger userId;
 
     @Getter
     private String name;
