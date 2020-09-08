@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,7 +14,8 @@ import java.math.BigInteger;
 import java.util.Calendar;
 
 @Entity
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class StatementEntity {
 
     @Id
@@ -49,4 +51,5 @@ public class StatementEntity {
     @Column(name = "updated_at")
     @Getter @Setter
     private Calendar updatedAt;
+
 }
