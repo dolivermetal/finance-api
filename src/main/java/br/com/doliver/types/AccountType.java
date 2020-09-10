@@ -2,11 +2,14 @@ package br.com.doliver.types;
 
 public enum AccountType {
 
-    BANK (1, "Bank"),
+    /**
+     * 0. BANK
+     */
+    BANK,
 
-    CREDIT_CARD (2, "Credit Card"),
+    /**
+     * 1. CREDIT_CARD
+     */
+    CREDIT_CARD
     ;
-
-    AccountType(int i, String name) {
-    }
 }

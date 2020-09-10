@@ -1,11 +1,13 @@
 package br.com.doliver.forms;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigInteger;
 
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class UserForm {
 
     @Getter

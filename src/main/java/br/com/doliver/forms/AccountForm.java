@@ -1,13 +1,15 @@
 package br.com.doliver.forms;
 
-import lombok.Builder;
+import br.com.doliver.types.AccountType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.AccessType;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class AccountForm {
 
     @Getter
@@ -17,7 +19,7 @@ public class AccountForm {
     private String alias;
 
     @Getter
-    private AccessType accountType;
+    private AccountType accountType;
 
     @Getter
     private BigDecimal balance;

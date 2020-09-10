@@ -11,6 +11,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 
 @Entity
+@Table(name = "user")
 @SuperBuilder
 @NoArgsConstructor
 public class UserEntity {

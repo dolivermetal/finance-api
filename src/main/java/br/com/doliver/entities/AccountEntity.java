@@ -1,5 +1,6 @@
 package br.com.doliver.entities;
 
+import br.com.doliver.types.AccountType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,13 +13,14 @@ import java.math.BigInteger;
 import java.util.Calendar;
 
 @Entity
+@Table(name = "account")
 @SuperBuilder
 @NoArgsConstructor
 public class AccountEntity {
 
     @Id
     @Column(name = "account_id", scale = 20, nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private BigInteger accountID;
 
@@ -29,7 +31,7 @@ public class AccountEntity {
     @Column(name = "account_type", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     @Getter @Setter
-    private AccessType accountType;
+    private AccountType accountType;
 
     @Column(name = "balance", nullable = false, scale = 10, precision = 2)
     @Getter @Setter

@@ -20,7 +20,7 @@ public class UserService {
     private UserRepository repository;
 
     public boolean validateLogin(String login, String password) {
-        logger.info(String.format("Tentativa de login do usuário $s", login));
+        logger.info(String.format("Tentativa de login do usuário %s", login));
         final UserEntity user = repository.findByLoginAndPassword(login, password);
         if (user != null) {
             return false;
@@ -29,16 +29,15 @@ public class UserService {
         return true;
     }
 
-    public boolean delete(BigInteger userId) {
+    public void delete(BigInteger userId) throws Exception {
         try {
             final UserEntity user = repository.getOne(userId);
             user.setStatus(false);
             user.setUpdatedAt(Calendar.getInstance());
             repository.save(user);
-            return true;
         } catch (Exception e) {
             logger.error(String.format("Erro ao inativar usuário $d", userId), e);
-            return false;
+            throw new Exception(e);
         }
     }
 
@@ -52,7 +51,7 @@ public class UserService {
                 .updatedAt(Calendar.getInstance())
                 .build();
         user = repository.save(user);
-        logger.info(String.format("Novo usuário cadastrado. user { id: $d, login : %s }", user.getUserId(), user.getLogin()));
+        logger.info(String.format("Novo usuário cadastrado. user{id:%d, login:%s}", user.getUserId(), user.getLogin()));
         return UserForm.builder()
                 .userId(user.getUserId())
                 .name(user.getName())

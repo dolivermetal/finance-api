@@ -14,13 +14,14 @@ import java.math.BigInteger;
 import java.util.Calendar;
 
 @Entity
+@Table(name = "statement")
 @SuperBuilder
 @NoArgsConstructor
 public class StatementEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "statement_id", scale = 20, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private BigInteger statementId;
 

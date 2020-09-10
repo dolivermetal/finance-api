@@ -2,13 +2,37 @@ package br.com.doliver.types;
 
 public enum Category {
 
-    FOOD (1, "Food"),
+    AUTOMOBILE,
 
-    BILLS (1, "Bills")
+    BAR,
+
+    BILLS,
+
+    BUY,
+
+    FOOD,
+
+    FUEL,
+
+    INVESTMENT,
+
+    HEALTH_CARE,
+
+    HOME,
+
+    OTHERS,
+
+    PET_CARE,
+
+    TAXES,
+
+    TRANSFER,
+
+    TRANSPORT,
+
+    TRAVEL,
+
+    PERSONAL_CARE
     ;
 
-
-    Category(int i, String name) {
-
-    }
 }

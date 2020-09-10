@@ -40,7 +40,11 @@ public class UserResource {
 
     @DeleteMapping("/{userId}")
     public ResponseEntity delete(@PathVariable BigInteger userId) {
-        userService.delete(userId);
-        return ResponseEntity.ok().build();
+        try {
+            userService.delete(userId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

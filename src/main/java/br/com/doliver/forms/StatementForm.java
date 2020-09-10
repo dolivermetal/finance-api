@@ -1,14 +1,16 @@
 package br.com.doliver.forms;
 
 import br.com.doliver.types.Category;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class StatementForm {
 
     @Getter
