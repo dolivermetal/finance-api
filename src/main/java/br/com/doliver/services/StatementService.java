@@ -37,7 +37,7 @@ public class StatementService {
                 .build();
         statement = repository.save(statement);
 
-        logger.info(String.format("Novo extrato cadastrado. statement { id: $d, description: %s, ammount: $d, category: %4}",
+        logger.info(String.format("New statement registered. statement { id: $d, description: %s, ammount: $d, category: %4}",
                 statement.getStatementId(),
                 statement.getDescription(),
                 statement.getAmount(),
@@ -46,7 +46,7 @@ public class StatementService {
         return builder(statement);
     }
 
-    public List<StatementForm> listByAccountId(BigInteger accountId) {
+    public List<StatementForm> listByAccountId(BigInteger accountId) throws Exception {
         final AccountEntity account = accountRepository.getOne(accountId);
         final List<StatementEntity> statements = repository.findByAccount(account);
         final List<StatementForm> forms = new ArrayList<>();
