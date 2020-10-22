@@ -1,5 +1,6 @@
 package br.com.doliver.resources;
 
+import br.com.doliver.excpetions.EntityNotFound;
 import br.com.doliver.forms.UserForm;
 import br.com.doliver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +10,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @RestController
-@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class UserResource {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    // TODO: improve login security
+    @PostMapping("/users/login")
     public ResponseEntity doLogin(@RequestHeader final String login,
                                   @RequestHeader final String password) {
         final boolean isValidated = userService.validateLogin(login, password);
@@ -28,7 +31,7 @@ public class UserResource {
         }
     }
 
-    @PostMapping("/create")
+    @PostMapping("/users")
     public ResponseEntity create(@RequestBody UserForm form) {
         final UserForm response = userService.create(form);
         if (response != null) {
@@ -38,13 +41,26 @@ public class UserResource {
         }
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/users/{userId}")
     public ResponseEntity delete(@PathVariable BigInteger userId) {
         try {
             userService.delete(userId);
             return ResponseEntity.ok().build();
+        } catch (EntityNotFound e) {
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity list() {
+        try {
+            List<UserForm> users = userService.listAll();
+            return ResponseEntity.ok().body(users);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
+
 }
