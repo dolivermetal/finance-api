@@ -30,7 +30,7 @@ public class AccountService {
                 .updatedAt(Calendar.getInstance())
                 .build();
         account = repository.save(account);
-        logger.info(String.format("Nova conta cadastrado. account{id:%d, alias:%s, account_type:%s}", account.getAccountID(), account.getAlias(), account.getAccountType()));
+        logger.info(String.format("New account registered. account{id:%d, alias:%s, account_type:%s}", account.getAccountID(), account.getAlias(), account.getAccountType()));
         return AccountForm.builder()
                 .accountId(account.getAccountID())
                 .alias(account.getAlias())
