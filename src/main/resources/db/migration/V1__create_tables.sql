@@ -5,7 +5,7 @@ create table `user` (
     password varchar(100) not null,
     status tinyint(1) not null,
     created_at timestamp null,
-    updated_at timestamp null,
+    updated_at timestamp not null default current_timestamp,
     primary key (user_id)
 );
 
@@ -15,7 +15,7 @@ create table account (
     account_type int(2) not null,
     balance decimal(10,2) not null,
     created_at timestamp null,
-    updated_at timestamp  null,
+    updated_at timestamp  not null default current_timestamp,
     primary key (account_id)
 );
 
@@ -26,6 +26,7 @@ create table statement (
     amount decimal(10,2) not null,
     category int(2) not null,
     created_at timestamp null,
+    updated_at timestamp not null default current_timestamp,
     primary key (statement_id),
     foreign key fk_statement_account (account_id) references account (account_id)
 );
