@@ -6,8 +6,7 @@ import br.com.doliver.forms.AccountForm;
 import br.com.doliver.forms.StatementForm;
 import br.com.doliver.repositories.AccountRepository;
 import br.com.doliver.repositories.StatementRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Repository
 public class StatementService {
 
@@ -23,8 +23,6 @@ public class StatementService {
 
     @Autowired
     private AccountRepository accountRepository;
-
-    private static final Logger logger = LoggerFactory.getLogger(StatementService.class);
 
     public StatementForm create(StatementForm form) throws Exception {
         final AccountEntity account = accountRepository.getOne(form.getAccount().getAccountId());
@@ -37,7 +35,7 @@ public class StatementService {
                 .build();
         statement = repository.save(statement);
 
-        logger.info(String.format("New statement registered. statement { id: $d, description: %s, ammount: $d, category: %4}",
+        log.info(String.format("New statement registered. statement { id: $d, description: %s, ammount: $d, category: %4}",
                 statement.getStatementId(),
                 statement.getDescription(),
                 statement.getAmount(),

@@ -3,9 +3,10 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'org.flywaydb.flyway' version '6.5.5'
+    id 'pmd'
 }
 
-group = 'br.com.doliversilva'
+group = 'br.com.doliver'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -36,9 +37,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // Log
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-
     // Documentation
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
@@ -61,4 +59,11 @@ flyway {
     user = db_user
     password = db_pass
     schemas = ['finance']
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    rulePriority = 5
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
 }
